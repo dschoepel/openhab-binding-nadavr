@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -128,7 +129,7 @@ public class NadAvrDiscoveryParticipant implements MDNSDiscoveryParticipant {
         if (thingUID != null) {
             Matcher matcher = NAD_AVR_PATTERN.matcher(qualifiedName);
             matcher.matches(); // we already know it matches, it was matched in getThingUID
-            String serial = matcher.group(3).toLowerCase();
+            String serial = matcher.group(3).toLowerCase(Locale.ROOT);
             String vendor = matcher.group(1).trim();
             String model = matcher.group(2).trim();
             if (serviceInfo.getHostAddresses().length == 0) {
@@ -181,7 +182,7 @@ public class NadAvrDiscoveryParticipant implements MDNSDiscoveryParticipant {
                 if (logger.isDebugEnabled()) {
                     logger.debug("This seems like a supported NAD A/V Receiver!");
                 }
-                String serial = matcher.group(3).toLowerCase();
+                String serial = matcher.group(3).toLowerCase(Locale.ROOT);
                 ThingTypeUID thingTypeUID = findThingType(matcher.group(2));
                 // Add the serial number to the UID to make it unique and identifiable
                 return new ThingUID(thingTypeUID, serial);
