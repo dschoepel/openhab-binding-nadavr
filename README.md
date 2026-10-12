@@ -6,6 +6,24 @@ This binding integrates NAD Surround Sound Receivers/Amplifiers via **Telnet** u
 
 Integration details can be found in the NAD Electronics command protocol documentation  here: [Protocol Integration Documentation](https://nadelectronics.com/software/#Protocol)
 
+## Versions and Installation
+
+This binding lives in its own repository and is built for two openHAB lines:
+
+| openHAB | Branch | Release tags | Java to build |
+|---------|--------|--------------|---------------|
+| 5.x     | `main` | `v5.x.y`     | 21            |
+| 4.x     | `4.x`  | `v4.x.y`     | 17            |
+
+To install, download the jar for your openHAB version from the
+[Releases](https://github.com/dschoepel/openhab-binding-nadavr/releases) page and copy it
+into your openHAB `addons` folder (for example `/usr/share/openhab/addons/`). Remove any
+older `org.openhab.binding.nadavr` jar from that folder first. Existing Things and Items
+keep working, because the binding id (`nadavr`) has not changed.
+
+To build it yourself, check out the branch for your openHAB version and run
+`mvn clean install` with the matching JDK. The jar is written to `target/`.
+
 ## Testing
 
 #### NAD T-787 AVR: 
